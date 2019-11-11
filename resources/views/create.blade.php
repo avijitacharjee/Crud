@@ -5,20 +5,42 @@
         padding: 70px;
         background: rgba(135, 206, 235,1);
     }
+    
 </style>
-<form id="form" action="" method="POST">
+<form id="form" action="" method="POST" onSubmit="return valid()">
 {{csrf_field()}}
-<div class="form-group" onSubmit="return valid()">
+<div class="form-group">
     <label for="name">Name</label>
-    <input type="text" class="form-control" id="name" placeholder="Name" name="name">
+    <div class="row">
+        <div class="col">
+            <input type="text" class="form-control" id="name" placeholder="Name" name="name">
+        </div>
+        <div class="col" id="nameVM">
+            
+        </div>
+    </div>
   </div>
   <div class="form-group">
     <label for="email">Email</label>
-    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Email" name="email">
+    <div class="row">
+        <div class="col">
+            <input type="email" class="form-control" id="email" placeholder="Email" name="email">
+        </div>
+        <div class="col" id="emailVM">
+            
+        </div>
+    </div>
   </div>
   <div class="form-group">
     <label for="password">Password</label>
-    <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+    <div class="row">
+        <div class="col">
+            <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+        </div>
+        <div class="col" id="passwordVM">
+            
+        </div>
+    </div>
   </div>
   <button type="submit" class="btn btn-primary" onClick="validate()">Submit</button>
 </form>
@@ -33,9 +55,11 @@
         var nameObj = document.getElementById("name");
         var emailObj= document.getElementById("email");
         var passwordObj=document.getElementById("password");
+        var flag=true;
         if(nameObj.value=="")
         {
-            return false;
+
+            flag=false;
         }
         if(emailObj.value=="")
         {
